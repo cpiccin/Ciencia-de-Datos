@@ -22,9 +22,9 @@ Pueden haber valores atipicos: **outliers**
 Dos variables están correlacionadas cuando si una varia la otra también. 
 
 La correlación puede ser 
-	•	Positiva (si una crece, la otra también, si una decrece, la otra también)
-	•	Negativa (si una crece, la otra decrece, y viceversa)
-	•	Sin correlación 
+ - Positiva (si una crece, la otra también, si una decrece, la otra también)
+ - Negativa (si una crece, la otra decrece, y viceversa)
+ - Sin correlación 
 
 <img width="325" height="297" alt="Screenshot 2026-03-19 at 10 57 40 AM" src="https://github.com/user-attachments/assets/cc40fe8c-de5d-4d0f-a7a7-5703cb20a4c8" />
 
@@ -54,24 +54,22 @@ Una covarianza alta dice que los datos de la muestra están muy dispersos respec
 Es el dato que dice si existe una dependencia entre ambas variables.
 
 La covarianza mide la **correlación LINEAL**
-￼
+
 <img width="1184" height="512" alt="image" src="https://github.com/user-attachments/assets/59a212eb-069f-441e-93e0-f9ae9db528a5" />
 
 
 ### Correlación de Pearson
 Para dos variables se puede medir su **correlación lineal** con el coeficiente de correlación `r`. Este coeficiente es una función que mide cuan relacionadas están las dos variables de forma lineal.
-	•	Si da 0 **NO existe correlación**
-	•	Si da 1 están **relacionadas linealmente de forma perfecta** (todos los puntos estan en una linea)
-	•	Si da -1 existe una **correlación negativa perfecta**
+ - Si da 0 **NO existe correlación**
+ - Si da 1 están **relacionadas linealmente de forma perfecta** (todos los puntos estan en una linea)
+ - Si da -1 existe una **correlación negativa perfecta**
 
 <img width="523" height="252" alt="1__#$!@%!#__1__#$!@%!#__Pasted Graphic" src="https://github.com/user-attachments/assets/f1d11f74-7620-40ad-b241-12b4679b177d" />
 
-￼
 ### Desvio estandar
 Es una medida que se utiliza para cuantificar la variación o la dispersión de un conjunto de datos numéricos. 
-	•	Si la desviación estándar es **baja**, la mayor parte de los datos de la muestra tienden a estar agrupados cerca de su media
-	•	Si la desviación estándar es **alta**, indica que los datos se distribuyen en un rango de valores mas amplio.
-
+ - Si la desviación estándar es **baja**, la mayor parte de los datos de la muestra tienden a estar agrupados cerca de su media
+ - Si la desviación estándar es **alta**, indica que los datos se distribuyen en un rango de valores mas amplio.
 
 ## Regresión
 Regresion: **predecir** un valor en un rango continuo, para ciertos valores de entrada.
@@ -80,11 +78,9 @@ Regresion: **predecir** un valor en un rango continuo, para ciertos valores de e
 
 <img width="639" height="207" alt="1__#$!@%!#__Pasted Graphic 2" src="https://github.com/user-attachments/assets/30b1b33c-04f2-4456-ada5-2bccb2019afb" />
 
-￼
 Aumenta el tiempo computacional entonces surge una mejor forma: **descenso por gradiente**.
 
 <img width="466" height="303" alt="1__#$!@%!#__Pasted Graphic 3" src="https://github.com/user-attachments/assets/dabf278f-09b1-46f8-b5f4-63d49afe061d" />
-
 
 Se va a saber que tan buena es la predicción a partir del calculo del error.
 
@@ -98,10 +94,9 @@ Dado una serie de puntos quiero encontrar una función que separe los puntos en 
 
 Encontrar los parámetros óptimos para esta curva consiste en construir un estimador de regresión logística
 
-
 # Metodos de clusterizacion
 **Clustering**: en este tipo de problemas se trata de agrupar los datos. Agruparlos de tal forma que queden N conjuntos distinguibles, aunque no necesariamente se sepa que signifiquen esos conjuntos.
-	•	El agrupamiento siempre será por características similares
+ - El agrupamiento siempre será por características similares
 
 ## K-Means
 Modelo mas simple de todos
@@ -116,7 +111,7 @@ Modelo mas simple de todos
 
 ### Regla del codo (Elbow Method)
  - Elegimos un rango, ejemplo 1 a 10, y para cada valor
- - Para cada centroide calcular la distancia promedio: si hay una caída abrupta hay un “codo” y entonces ese punto debe ser la cantidad de clusters￼
+ - Para cada centroide calcular la distancia promedio: si hay una caída abrupta hay un “codo” y entonces ese punto debe ser la cantidad de clusters
 
 <img width="438" height="195" alt="Pasted Graphic 4" src="https://github.com/user-attachments/assets/ac367402-311e-4e38-bbf4-c01c8d4db33f" />
 
@@ -130,18 +125,18 @@ Modelo mas simple de todos
 Cada punto en el conjunto de datos tiene un coeficiente de Silhouette. Para calcularlo necesitamos calcular 
 
 `a(i)`: distancia promedio del punto i a cada uno de los puntos de su cluster 
-￼
+
 <img width="311" height="185" alt="Pasted Graphic 5" src="https://github.com/user-attachments/assets/33d03c02-9f9c-4e31-8407-3d4dff3bb180" />
 
 `b(i)`: distancia promedio del punto i a cada uno de los puntos del cluster mas cercano a su propio cluster
-￼
+
 <img width="238" height="184" alt="Pasted Graphic 6" src="https://github.com/user-attachments/assets/c8bb6d16-c8ee-41bf-98de-b9f001275e75" />
 
 - Idealmente a(i) << b(i)
-￼
+
 
 **Consideraciones:**
-	•	Si a(i) > b(i), i esta posiblemente mal clasificado.
+ - Si a(i) > b(i), i esta posiblemente mal clasificado.
 
 El coeficiente de Silhouette se calcula como
 
@@ -153,7 +148,7 @@ Donde en el peor de los casos s(i) = -1
 
 
 Para buscar **el mejor K** podemos hacer el plot para distintos K, es mejor cuantos menos outliers haya.
-￼
+
 <img width="414" height="212" alt="Pasted Graphic 10" src="https://github.com/user-attachments/assets/e61d761f-8fc2-4f43-9ed8-35d4844ec73f" />
 
 
@@ -174,19 +169,19 @@ Sea D un conjunto de nuestros datos reales:
 5. Calcular la estadística de Hopkins (H) como: la distancia media del vecino mas cercano en el conjunto de datos aleatorios dividida por la suma de las distancias medias del vecino	mas cercano en el conjunto de datos real y simulado.
 
 <img width="186" height="119" alt="Pasted Graphic 11" src="https://github.com/user-attachments/assets/db6bb7d2-6f3d-4472-a051-9f6687b883a8" />
-￼
+
 ### Interpretación 
-	•	Si D está distribuida de forma uniforme, entonces ∑ xi y ∑ yi   serían muy parecidos, entonces H sería aproximadamente ½ (0.5). Significa que posiblemente mi conjunto original tiene una distribución uniforme y no hay una tendencia al cluster
-	•	Pero si hay clústeres en D, las distancias de los puntos artificiales ∑ yi serían mucho más grandes que las distancias de los puntos reales:  ∑ xi y por lo tanto H sería mayor que 0.5. 
-	•	Un valor de H superior a 0,75 indica una tendencia a la agrupación en un nivel de confianza del 90 %.
+ - Si D está distribuida de forma uniforme, entonces ∑ xi y ∑ yi   serían muy parecidos, entonces H sería aproximadamente ½ (0.5). Significa que posiblemente mi conjunto original tiene una distribución uniforme y no hay una tendencia al cluster
+ - Pero si hay clústeres en D, las distancias de los puntos artificiales ∑ yi serían mucho más grandes que las distancias de los puntos reales:  ∑ xi y por lo tanto H sería mayor que 0.5. 
+ - Un valor de H superior a 0,75 indica una tendencia a la agrupación en un nivel de confianza del 90 %.
 
 ### Hipotesis que maneja Hopkins
  - **Hipotesis nula**: el conjunto de datos D se distribuye uniformemente (o sea no hay clusters significativos)
-	•	**Hipótesis alternativa**: el conjunto de datos D no esta uniformemente distribuido (contiene clusters significativos)
+ - **Hipótesis alternativa**: el conjunto de datos D no esta uniformemente distribuido (contiene clusters significativos)
 
 Podemos realizar la prueba de la estadística de Hopkins de forma iterativa, utilizando 0,5 como umbral para rechazar la hipótesis alternativa. 
-	•	Es decir, si H < 0,5, es poco probable que D tenga conglomerados estadísticamente significativos.
-	•	O si el valor de la estadística de Hopkins es cercano a 1, entonces podemos rechazar la hipótesis nula y concluir que el conjunto de datos D es significativamente un dato agrupable.
+ - Es decir, si H < 0,5, es poco probable que D tenga conglomerados estadísticamente significativos.
+ - O si el valor de la estadística de Hopkins es cercano a 1, entonces podemos rechazar la hipótesis nula y concluir que el conjunto de datos D es significativamente un dato agrupable.
 
 ## Entrenamiento
 **Como se entrenan estos modelos?**
@@ -194,7 +189,7 @@ Podemos realizar la prueba de la estadística de Hopkins de forma iterativa, uti
 Se va a usar una parte de los datos para entrenar el modelo y la otra para testearlo.
 
 A su vez se puede partir el conjunto de entrenamiento en 5 y usar una partecita para testear que se va a ir moviendo a lo largo de 5 iteraciones para ver que manera el modelo quedo mejor entrenado.
-￼
+
 <img width="452" height="182" alt="Pasted Graphic 12" src="https://github.com/user-attachments/assets/9fa00aca-398a-460c-8e12-b904ea1bbe91" />
 
 <img width="400" height="184" alt="Pasted Graphic 13" src="https://github.com/user-attachments/assets/e586c3d2-c5eb-4db2-a752-584e326797e8" />
