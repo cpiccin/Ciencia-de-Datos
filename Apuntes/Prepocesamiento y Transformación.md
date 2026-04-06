@@ -152,12 +152,12 @@ Se pueden deber a un error de medición, aleatoriedad, que esa instancia sea de 
 Son valores atípicos que se pueden encontrar en una simple variable. Son buenos para la detección de extremos pero no en otros casos.
 
 #### Métodos univariados
-**Z-Score:** es una métrica que indica cuántas desviaciones estándar tiene una observacion de la media muestral, asumiendo distribucion gaussiana. <br>
+* **Z-Score:** es una métrica que indica cuántas desviaciones estándar tiene una observacion de la media muestral, asumiendo distribucion gaussiana. <br>
 Se fija un umbral para calcular el z-score. Como _regla de oro_  todos los valores Z que en módulo sean mayor a 3 son potencialmente outliers: `|Z| > 3`.
 
 <img width="204" height="92" alt="image" src="https://github.com/user-attachments/assets/a1aca55f-bf44-48df-9843-a4e8f0939734" />
 
-**Z-Score Modificado:** La media y desviacion estandar de la muestra pueden verse afectados por los valores extremos en los datos.<br>
+* **Z-Score Modificado:** La media y desviacion estandar de la muestra pueden verse afectados por los valores extremos en los datos.<br>
 
 En vez de usar la media se usa la mediana. Si tengo que calcular un promedio, con un outlier se puede ver distorsionado, por eso se busca usar algo mas robusto: la mediana de cada variable. Surgió una nueva variable que es el valor menos la mediana, a esos valores nuevos les tomo la mediana y obtengo $$MAD=median{|x_{i}-\hat{x}|}$$.
 
@@ -167,9 +167,19 @@ Agarro la variable, calculo me mediana a cada observación le resto la mediana
 
 Como _regla de oro_, valores en modulo mayores a `3.5` son considerados outliers.
 
+* **Análisis de Box-Plot**: Los Box-Plots permiten visualizar valores extremos univariados.
 
+Las estadisticas de una distribucion univariada se resumen en terminos de cinco cantidades:
+- Minimo/maximo (bigotes)
+- Primer y tercer cuantil (caja)
+- Mediana (linea media de la caja)
+- IQR (rango intercuartil) = Q3+Q1
 
-### Multivariado
+Generalmente:
+* $$\pm 1.5 \cdot IQR$$: outliers moderados
+* $$\pm 3 \cdot IQR$$: outliers severos
+
+### Multivariados
 Los valores atipicos multivariados se pueden encontrar en un espacio n-dimensional. 
 
 #### Métodos multivariados
