@@ -183,3 +183,4 @@ Generalmente:
 Los valores atipicos multivariados se pueden encontrar en un espacio n-dimensional. 
 
 #### Métodos multivariados
+ Minuto 24:21
