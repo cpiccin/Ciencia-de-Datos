@@ -128,3 +128,48 @@ Algunos métodos analiticos requieren que las variables _predictoras_ sean numé
 
 Son variables numéricas binarias que toman valores 1 o 0 para indicar la presencia o ausencia de una característica cualitativa.
 
+# Análisis de valores atípicos
+
+## Outliers
+**Outliers:** “Un outlier es una observación que se desvía tanto de las otras observaciones como para despertar sospechas que fue generado por un mecanismo diferente”
+
+Un outlier es subjetivo al problema, porque pueden tener sentido aunque sean valores distantes al resto de datos.
+
+Se pueden deber a un error de medición, aleatoriedad, que esa instancia sea de una familia distinta a la del resto, etc.
+
+> ¿Es necesario elimina outliers?
+- Se los debe detectar porque su presencia puede influenciar los resultados en un análisis estadístico, pero no necesariamente es un dato que se debe descartar.
+- Se los debe inspeccionar para saber como tratarlos.
+- Pueden estar alertando anomalías, y a veces nos interesa encontrarlos para:
+    - Detección de fraudes
+    - Detección de fallas
+    - Patologías médicas
+ 
+## Tipos de outliers
+<img width="629" height="253" alt="image" src="https://github.com/user-attachments/assets/3c796b8f-e439-4268-ade6-526828a973c5" />
+
+### Univariados
+Son valores atípicos que se pueden encontrar en una simple variable. Son buenos para la detección de extremos pero no en otros casos.
+
+#### Métodos univariados
+**Z-Score:** es una métrica que indica cuántas desviaciones estándar tiene una observacion de la media muestral, asumiendo distribucion gaussiana. <br>
+Se fija un umbral para calcular el z-score. Como _regla de oro_  todos los valores Z que en módulo sean mayor a 3 son potencialmente outliers: `|Z| > 3`.
+
+<img width="204" height="92" alt="image" src="https://github.com/user-attachments/assets/a1aca55f-bf44-48df-9843-a4e8f0939734" />
+
+**Z-Score Modificado:** La media y desviacion estandar de la muestra pueden verse afectados por los valores extremos en los datos.<br>
+
+En vez de usar la media se usa la mediana. Si tengo que calcular un promedio, con un outlier se puede ver distorsionado, por eso se busca usar algo mas robusto: la mediana de cada variable. Surgió una nueva variable que es el valor menos la mediana, a esos valores nuevos les tomo la mediana y obtengo $$MAD=median{|x_{i}-\hat{x}|}$$.
+
+Luego, para calcular la transformación, a cada observación le resto la mediana, se la divide por el $$MAD$$, y se la normaliza multiplicando por $$0.6745$$, ese valor para que sea comparable con la desviacion estandar.
+
+Agarro la variable, calculo me mediana a cada observación le resto la mediana
+
+Como _regla de oro_, valores en modulo mayores a `3.5` son considerados outliers.
+
+
+
+### Multivariado
+Los valores atipicos multivariados se pueden encontrar en un espacio n-dimensional. 
+
+#### Métodos multivariados
