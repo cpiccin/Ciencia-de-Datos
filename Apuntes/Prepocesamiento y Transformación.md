@@ -182,5 +182,41 @@ Generalmente:
 ### Multivariados
 Los valores atipicos multivariados se pueden encontrar en un espacio n-dimensional. 
 
+Lo ideal es poder encontrar un modelo o estrategia que combine las variables.
+
 #### Métodos multivariados
- Minuto 24:21
+* **Distancia de Mahalanobis:** permite medir la distancia entre el punto x (con n coordenadas) y un conjunto de observaciones con media $$\hat{\mu}$$ y una matriz de covarianza S
+
+<img width="478" height="163" alt="image" src="https://github.com/user-attachments/assets/9b14cbc8-055a-4422-9fb2-2872814f5e19" />
+
+Voy a tener un registro en el dataset con distintas columnas, de 1 a n, cada fila va a tener un valor para las medias. 
+
+Se mide la distancia para detectar outliers por encima de la elipse.
+
+<img width="853" height="313" alt="image" src="https://github.com/user-attachments/assets/37a47d00-c99b-424a-b27d-af1dd656e6a0" />
+
+
+* **LOF - Local Outlier Factor:** el metodo LOF valora puntos en un conjunto de datos multivariados. Es un metodo basado en densidad que utiliza la busqueda de vecinos mas cercanos:
+  * Se compara la densidad de cualquier punto de datos con la densidad de sus vecinos
+  * Parametro k (cantidad de vecinos) y metrica de distancia
+
+El metodo calcula los scores para cada punto, se debe definir un umbral de corte, que depende del dominio.
+* Si el score de punto X es 5, significa que la densidad promedio de los vecinos de X es 5 veces mayor que su densidad local
+
+<img width="484" height="338" alt="image" src="https://github.com/user-attachments/assets/5b891be9-5972-40eb-9179-99bec7714748" />
+
+
+* **Isolation Forest:** Es un algoritmo no supervisado y no paramétrico basado en árboles de decisión. **Idea Principal**: los datos anómalos se pueden aislar los datos normales mediante particiones recursivas del conjunto de datos.
+
+Se toman observaciones, y cada arista es una "pregunta" que se le hace.
+
+Como funciona? Tomar una muestra de los datos y construir un árbol de
+aislamiento:
+ 1. Seleccionar aleatoriamente n características .
+ 2. Dividir los puntos de datos seleccionando aleatoriamente un valor entre el mínimo y el máximo de las características seleccionadas.
+
+La partición de observaciones se repite recursivamente hasta que todas las observaciones estén aisladas.
+
+<img width="265" height="350" alt="image" src="https://github.com/user-attachments/assets/ca58853c-502e-407d-a58b-c3fc6bb56951" />
+
+<img width="837" height="253" alt="image" src="https://github.com/user-attachments/assets/29b17ce0-943b-4cc9-8f95-c4054706e114" />
