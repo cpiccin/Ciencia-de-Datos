@@ -50,6 +50,64 @@ Es otra forma de medir qué tan mezclados están los datos en un nodo de un árb
 
 Algunas implementaciones de arboles de decision utilizan la impureza de gini en vez de la ganancia de informacion, porque es mas facil de calcular (menos costosa computacionalmente)
 
+<img width="1280" height="648" alt="image" src="https://github.com/user-attachments/assets/d6d51729-2fbd-40f6-af06-9cc060029c26" />
+
+Como funciona Gini?
+<img width="1280" height="618" alt="image" src="https://github.com/user-attachments/assets/2174d4f1-d441-400b-a503-652d32c31d02" />
+
+Se obtiene la impureza para cada nodo, y luego la impureza de gini total, para el nodo raiz, que sera un promedio ponderado
+
+<img width="1280" height="656" alt="image" src="https://github.com/user-attachments/assets/94b54e16-f4e0-4cf5-b0ab-79460fffa1b6" />
+
+Se hace lo  mismo para los otros 2 y el de menor valor va a tener la menor impureza, o sea que tendra las mejores chances para clasificar si se lo coloca como nodo raiz.
+
+
+## C4.5
+Son mejoras a ID3:
+- Soporta campos numericos y rangos continuos:
+  -  El algoritmo puede crear dinamicamente un campo **booleano** tal que si A<Ac = true, sino Ac = False.
+  -  Se va a encontrar ese umbral c de forma que quede con la mayor ganancia de informacion
+  -  Se ordena A por ej de menor a mayor; luego se identifican los valores adyacentes (de la clase que es nuestra salida); detectamos cuando hay un cambio de valor de salida, entonces en esos limites seguramente estan nuestros Ci candidatos; nos quedamos con el Ci que de el mejor resultado.
+- Contempla la posibilidad de usar datos faltantes:
+  - Los atributos faltantes los marca con un ? y no se usan para el calculo de la ganancia o la entropia  
+- Se agrego un metodo adicional de poda que evita el overfitting:
+  - Se genera el arbol y luego se analiza de forma recursiva, desde las hojas que preguntas (nodos interiores) se pueden eliminar sin que se incremente el error de clasificacion.
+  - Mas a detalle...
+      1. Se elimina un nodo interior cuyos sucesores son todos nodos hoja
+      2. Se vuelve a calcular el error que se comete con este nuevo arbol sobre el conjunto de test
+      3. Si este error es menor que el error anterior, entonces se elimina el nodo y todos sus sucesores (hojas)
+      4. Se repite 
+
+
+
+## Random Forest
+Es un **ensamble**
+
+> Muchos estimadores mediocres, promediados, pueden ser muy buenos estimadores
+
+### Bootstrap aggregating:
+
+Es una técnica, o meta-algoritmo que dice lo siguiente:
+- Dado un conjunto de entrenamiento D, de tamaño n, la técnica de bagging generará m nuevos conjuntos de entrenamiento D1,... Di,..., Dm cada uno de tamaño n' tomando muestras aleatorias de D.
+
+Y en general n' < n. Siendo n' aproximadamente un 2/3 de n.
+
+
+#### Attribute bagging (o random subspace):
+
+Luego para cada una de las m tablas, escogemos sólo algunos atributos (COLUMNAS) de forma aleatoria también.
+
+¿Cuántas nos quedamos? => Con RAÍZ CUADRADA del número de atributos.
+
+Cómo acá hay 8 atributos, tomamos Round(√8) = 3
+
+(Esto es recomendable sobre todo cuando hay muchas columnas)
+
+
+
+
+
+
 
 
 
