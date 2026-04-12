@@ -64,13 +64,13 @@ Se hace lo  mismo para los otros 2 y el de menor valor va a tener la menor impur
 
 ## C4.5
 Son mejoras a ID3:
-- Soporta campos numericos y rangos continuos:
+- **Soporta campos numericos y rangos continuos**:
   -  El algoritmo puede crear dinamicamente un campo **booleano** tal que si A<Ac = true, sino Ac = False.
   -  Se va a encontrar ese umbral c de forma que quede con la mayor ganancia de informacion
   -  Se ordena A por ej de menor a mayor; luego se identifican los valores adyacentes (de la clase que es nuestra salida); detectamos cuando hay un cambio de valor de salida, entonces en esos limites seguramente estan nuestros Ci candidatos; nos quedamos con el Ci que de el mejor resultado.
-- Contempla la posibilidad de usar datos faltantes:
+- **Contempla la posibilidad de usar datos faltantes**:
   - Los atributos faltantes los marca con un ? y no se usan para el calculo de la ganancia o la entropia  
-- Se agrego un metodo adicional de poda que evita el overfitting:
+- **Se agrego un metodo adicional de poda que evita el overfitting**:
   - Se genera el arbol y luego se analiza de forma recursiva, desde las hojas que preguntas (nodos interiores) se pueden eliminar sin que se incremente el error de clasificacion.
   - Mas a detalle...
       1. Se elimina un nodo interior cuyos sucesores son todos nodos hoja
@@ -81,27 +81,31 @@ Son mejoras a ID3:
 
 
 ## Random Forest
-Es un **ensamble**
+Es un **ensamble**.
 
 > Muchos estimadores mediocres, promediados, pueden ser muy buenos estimadores
 
 ### Bootstrap aggregating:
-
-Es una técnica, o meta-algoritmo que dice lo siguiente:
-- Dado un conjunto de entrenamiento D, de tamaño n, la técnica de bagging generará m nuevos conjuntos de entrenamiento D1,... Di,..., Dm cada uno de tamaño n' tomando muestras aleatorias de D.
+Los arboles no soportan ser entrenados con muchisimos datos, empiezan a fallar, entonces lo que podemos hacer es partir el conjunto grande en conjuntos mas chicos.
 
 Y en general n' < n. Siendo n' aproximadamente un 2/3 de n.
 
+Se generaran m subtablas tomando solo algunas filas, de forma aleatoria. 
 
-#### Attribute bagging (o random subspace):
-
-Luego para cada una de las m tablas, escogemos sólo algunos atributos (COLUMNAS) de forma aleatoria también.
+**Se usa la tecnica de Attribute bagging (o random subspace):** para cada una de las m tablas, escogemos sólo algunos atributos (COLUMNAS) de forma aleatoria también.
 
 ¿Cuántas nos quedamos? => Con RAÍZ CUADRADA del número de atributos.
-
-Cómo acá hay 8 atributos, tomamos Round(√8) = 3
+- Si hay 8 atributos, tomamos Round(√8) = 3
 
 (Esto es recomendable sobre todo cuando hay muchas columnas)
+
+Ahora para cada tabla, entrenamos un arbol, y para cada arbol calculamos su matriz de confusion (true negative, false positive, etc). Esto para poder ver el desempeño del arbol.
+
+Calculamos la **tasa de error** de cada arbol:
+- `(FP + FN) / TOTAL = Tasa de error` 
+- Nos quedamos con el mejor arbol de los m y repetimos el proceso K veces: K veces generamos m subconjuntos, entrenamos m arboles y nos quedamos con el mejor.
+- Al final nos van a quedar K arboles.
+
 
 
 
