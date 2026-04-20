@@ -67,6 +67,6 @@ Para calcular cual será el soft margin, se va a usar un algoritmo que usa valid
 
 Cuando se usa un margen blando para determinar la ubicacion del umbral, se esta usando un **Soft Margin Classifier** tambien conocido como **Support Vector Classifier**. Vector porque las observaciones en los limites y dentro del soft margin se llaman **Support Vectors**, me ayudan a calcular el umbral. Son vectores porque son puntos en un espacio de dimension N (en el ejemplo N=1), y soportan el area llamada soft margin.
 
-
+15:57
 
 
