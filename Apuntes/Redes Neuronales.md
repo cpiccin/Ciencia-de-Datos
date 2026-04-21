@@ -88,3 +88,8 @@ Esos radios se van haciendo cada vez mas chicos. Se definen centroides, las de m
 Son "mapas autoorganizados". Se lo puede pensar como una evolucion/mejora de k-means.
 
 Se trata de mapear un espacio de entrada a uno de salida.
+
+## Backpropagation: paso a paso
+Es un metodo de descenso por gradiente.
+
+completar
