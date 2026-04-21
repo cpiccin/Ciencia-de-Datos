@@ -67,6 +67,67 @@ Para calcular cual será el soft margin, se va a usar un algoritmo que usa valid
 
 Cuando se usa un margen blando para determinar la ubicacion del umbral, se esta usando un **Soft Margin Classifier** tambien conocido como **Support Vector Classifier**. Vector porque las observaciones en los limites y dentro del soft margin se llaman **Support Vectors**, me ayudan a calcular el umbral. Son vectores porque son puntos en un espacio de dimension N (en el ejemplo N=1), y soportan el area llamada soft margin.
 
-15:57
 
+Ahora el mismo problema en dos dimensiones: masa y altura de los ratones
+
+<img width="370" height="226" alt="image" src="https://github.com/user-attachments/assets/af08d33a-3c64-4d02-8655-e2d06849507d" />
+
+El umbral ahora es una recta
+
+<img width="361" height="228" alt="image" src="https://github.com/user-attachments/assets/111c2739-8e57-44f0-abd9-c6472f263eac" />
+
+Y los soft margins:
+
+<img width="496" height="226" alt="image" src="https://github.com/user-attachments/assets/9c183858-4937-4c68-8661-adc5212b49a2" />
+
+<img width="591" height="218" alt="image" src="https://github.com/user-attachments/assets/39ffc850-824a-4b46-8b40-bf777a6b13e5" />
+
+Si fuese N = 3 con la altura, masa y edad del raton, el umbral va a ser un plano en un espacio tridimensional.
+
+<img width="536" height="210" alt="image" src="https://github.com/user-attachments/assets/010d0c7b-8601-4c8e-9afa-35a9bf0dc8ac" />
+
+Por convencion decimos que el support vector classifier es un hiper-plano, parte al espacio en dos.
+
+Que pasa si el conjunto de datos no es linealmente separable
+
+<img width="592" height="221" alt="image" src="https://github.com/user-attachments/assets/54145c9c-3bf0-4d79-b6d1-4402fa9d0d0f" />
+
+**Los Maximal Margin Classifiers y los Support Vector Classifiers no pueden clasificar problemas que no son linealmente separables**
+
+ Se puede mejorar con **Support Vector Machines**.
+
+
+### Support Vector Machines
+Tengo el problema en 1 dimension que no es linealmente separable y le agrego un eje y que se define como y = dosis ^ 2
+
+<img width="484" height="50" alt="image" src="https://github.com/user-attachments/assets/dbc37863-43b2-4454-a0de-7813b51c2f49" />
+
+<img width="519" height="306" alt="image" src="https://github.com/user-attachments/assets/8ee08768-343b-4355-b1d1-1fc697f3f07b" />
+
+Ahora si es posible partir el espacio con una recta. La recta es el **Support Vector Classifier**
+
+<img width="519" height="263" alt="image" src="https://github.com/user-attachments/assets/3195f085-90ee-4058-a6c9-3d8a866ce414" />
+
+En general es:
+1. Empezar con observaciones en una dimension relativamente baja
+2. Llevar los datos a una dimension mayor
+3. Encontrar un clasificador de tipo Support Vector que separe los datos en la alta dimension en 2 grupos.
+
+#### Por que y = x^2? SVM Kernel polinómico
+Porque el algoritmo atras de Support Vector Machines usa **Funciones Kernel** que sistematicamente buscan clasificadores de tipo Support Vector Classifiers en dimensiones mas altas.
+
+En el ejemplo anterior se usó un Kernel de tipo **Polinómico**, el cual toma un parametro `d` para el grado del polinomio.
+
+**En resumen, el SVM Kernel polinomico:**
+1. El Kernel polinomico de SVM sistematicamente incrementa las dimensiones seteando `d`, desde 1 (o el valor base de las observaciones) hasta el valor del parametro.
+2. Calcula en cada caso las relaciones entre las observaciones para encontrar un hiper-plano que parta el conjunto en dos.
+3. Usando **validacion cruzada**, en cada caso calcula el error y se queda con el mejor `d`.
+
+### SVM Kernel Radial - RBFK
+Soporta Support Vector Classifiers en infinitas dimensiones. 
+
+Funciona como un Nearest Neighbor model ponderado.
+
+### SVM: The Kernel Trick
+Las Kernel Functions solo calculan la relacion entre pares de observaciones como si estuviesen en otra dimension, pero no realizan una verdadera transformacion del espacio. Reduce el tiempo de computo necesario porque evita toda la matematica relacionada a la transformacion del espacio.
 
