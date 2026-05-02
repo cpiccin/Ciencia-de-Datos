@@ -1,4 +1,4 @@
-# Prepocesamiento y Transformación
+# Preprocesamiento y Transformación
 Algunas tareas de estas etapas:
 - Integracion de datos
 - Limpieza de datos: completar valores faltantes, eliminacion de ruido, identificar o eliminar valores atipidocs y corregir incoherencias
